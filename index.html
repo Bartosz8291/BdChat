@@ -6,6 +6,38 @@
     <title>BDCHAT</title>
     <link rel="apple-touch-icon" sizes="180x180" href="logo.jpg">
     <!-- Add any additional CSS or meta tags here -->
+    <style>
+        /* Example CSS for styling chat interface */
+        #chat-container {
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .message {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        #message-input {
+            width: calc(100% - 70px);
+            padding: 5px;
+            margin-top: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        #send-button {
+            padding: 5px 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <!-- Chat interface content -->
@@ -20,9 +52,28 @@
         <!-- Input field for typing messages -->
         <input type="text" id="message-input" placeholder="Type your message here">
         <!-- Button to send the message -->
-        <button id="send-button">Send</button>
+        <button id="send-button" onclick="sendMessage()">Send</button>
     </div>
 
-    <!-- Add any additional JavaScript scripts here -->
+    <!-- JavaScript code -->
+    <script>
+        function sendMessage() {
+            // Get the message from the input field
+            var messageInput = document.getElementById("message-input");
+            var messageText = messageInput.value;
+
+            // Clear the input field
+            messageInput.value = "";
+
+            // Create a new message element
+            var messageElement = document.createElement("div");
+            messageElement.classList.add("message");
+            messageElement.textContent = messageText;
+
+            // Append the message element to the chat messages container
+            var chatMessages = document.getElementById("chat-messages");
+            chatMessages.appendChild(messageElement);
+        }
+    </script>
 </body>
 </html>
